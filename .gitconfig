@@ -1,0 +1,58 @@
+[user]
+	name = Magnus Johansson
+	useConfigOnly = true
+	email = magnus.johansson@se.ibm.com
+
+[alias]
+        branch-name = "!git rev-parse --abbrev-ref HEAD"
+        publish = "!git push -u origin $(git branch-name)"
+        pub = "!git push -u origin $(git branch-name)"
+        dev = !git checkout develop && git pull origin develop
+        master = !git checkout master && git pull origin 
+        ls = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --date=short
+        ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%an]" --decorate --numstat
+        cm = commit -m
+        st = status
+				cn = checkout -b
+				c- = checkout -
+        aliases = "!git config -l | grep alias | cut -c 7-"
+        co = !git for-each-ref --format='%(refname:short)' refs/heads | fzf | xargs git checkout
+
+[core]
+	excludesfile = /Users/magnusjohansson/.gitignore_global
+        pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+	editor = emacs
+
+[interactive]
+        diffFilter = delta --color-only
+
+[hub]
+	host = github.ibm.com
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /private/var/folders/w9/hv10hmgj5yj82zhynq6g_95w0000gn/T/AppTranslocation/F898F5B8-0059-462E-A74D-56816C5BD2D4/d/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[diff]
+	tool = Kaleidoscope
+[difftool "vscode"]
+	cmd = "code --wait --diff  "
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+[merge]
+	tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
+[pager]
+	branch = false
