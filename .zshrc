@@ -78,7 +78,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(osx vscode fzf fzf-z z common-aliases docker history dotenv zsh-better-npm-completion zsh-syntax-highlighting)
+plugins=(vscode fzf z common-aliases docker history dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
