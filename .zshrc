@@ -1,9 +1,13 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 #if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 #fi
+autoload -Uz compinit
+compinit
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -73,12 +77,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+export NVM_DIR="$HOME/.nvm"
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(osx vscode fzf fzf-z z common-aliases docker history dotenv zsh-better-npm-completion zsh-syntax-highlighting)
+plugins=(osx vscode fzf fzf-z z common-aliases docker history dotenv zsh-better-npm-completion zsh-syntax-highlighting zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -115,13 +123,13 @@ ZSH_DOTENV_FILE=.dotenv
 #bindkey "[C" forward-word
 
 # added by travis gem
-[ -f /Users/magnusjohansson/.travis/travis.sh ] && source /Users/magnusjohansson/.travis/travis.sh
+#[ -f /Users/magnusjohansson/.travis/travis.sh ] && source /Users/magnusjohansson/.travis/travis.sh
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
-[ -f /Users/magnusjohansson/.intellij/intellij.sh ] && source /Users/magnusjohansson/.intellij/intellij.sh
+#[ -f /Users/magnusjohansson/.intellij/intellij.sh ] && source /Users/magnusjohansson/.intellij/intellij.sh
 
 alias mux=tmuxinator
-export EDITOR=/usr/local/bin/emacs
+export EDITOR=/opt/homebrew/bin/emacs
 
 unalias fd
 
@@ -152,11 +160,12 @@ export FZFZ_EXTRA_OPTS='--keep-right --preview-window=right:30% --tiebreak=begin
 export FZFZ_PREVIEW_COMMAND='exa --level 1 --tree --color=always --group-directories-first --git-ignore {}'
 export TERM=xterm-256color
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+#[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 #neofetch
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
