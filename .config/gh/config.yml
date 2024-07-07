@@ -11,8 +11,11 @@ aliases:
     co: pr checkout
     prc: pr create
     ic: issue create
+    icf: -R https://github.ibm.com/ixliberty/ixl-frontend issue create
+    ica: -R https://github.ibm.com/ixliberty/ixl-adapter issue create
     prv: pr view -w
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.
 browser:
+version: "1"
